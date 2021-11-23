@@ -1,10 +1,9 @@
 const { Router } = require('express');
 const axios = require("axios");
-const Breed = require('../models/Breed');
-const Temperament = require("../models/Temperament");
+const { Temperament, Breed} = require("../db");
 const router = Router();
 
-router.get("/", async (req, res, next) => {
+const getApiInfo = async () => {
     const getUrl = await axios.get("https://api.thedogapi.com/v1/breeds?limit=3?api_key=bf4cac36-d33c-4fbc-bb46-2aac021fc61d");
     const getInfo = await getUrl.data.map((el) => {
         return {
@@ -15,30 +14,45 @@ router.get("/", async (req, res, next) => {
             lifespan: el.life_span
         }
     });
-    // const getDbInfo = async () => {return await Breed.findAll({
-    //     include: {
-    //         model: Temperament,
-    //         attributes: ["name"],
-    //         through: { 
-    //             attributes: [],
-    //         },
-    //     }
-    // }) };
-    // const infoTotal= getInfo.concat(getDbInfo)
-    res.json(getInfo);
-});
-router.get("/dogs?name=:name", async (req, res, next) => {
-    const getUrl = await axios.get("https://api.thedogapi.com/v1/breeds?api_key=bf4cac36-d33c-4fbc-bb46-2aac021fc61d");
-    const name = req.params.name.toLocaleLowerCase();
-    const dogInfo = await getUrl.data.find((el) => {
-        el.name.toLocaleLowerCase() === name
-    })
-    if (!dogInfo) {
-        return res.status(404).json({error: "No existe ninguna raza con el nombre indicado"});
-    }
+    return getInfo;
+};
 
-    res.json(dogInfo);
+const getDbInfo = async () => {
+    return await Breed.findAll({
+            include: {
+                model: Temperament,
+                attributes: ["name"],
+                through: { 
+                    attributes: [],
+                },
+            }
+        }) 
+};
+const getTotal = async () => {
+    const apiInfo = await getApiInfo();
+    const dbInfo = await getDbInfo();
+    const info = apiInfo.concat(dbInfo);
+    return info;
+} 
+
+
+router.get("/", async (req, res, next) => {
+    let name = req.query;
+    let breeds = await getTotal();
+    if (name) {
+        let breedName = await breeds.filter(el => {
+            el.name.includes(name);
+        });
+        if(breedName.length) { 
+            return res.status(200).send(breedName);
+        } 
+        // else {
+        // //     return res.status(404).send("don't have that breed");
+        // // }
+    }
+    return res.status(200).send(breeds);
 });
+
 router.get("/{idRaza}", (req, res, next) => {
     res.send("soy get por id");
 });

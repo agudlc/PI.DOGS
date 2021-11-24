@@ -37,9 +37,11 @@ conn.sync({ force: true }).then( async () => {
   const clean = await merge.filter(el => el);
   
   await clean.forEach(el => {
+    if(!el){
     Temperament.findOrCreate({ where: {
       name: el,
     }});
+  }
   });
 }
 

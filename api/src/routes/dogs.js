@@ -42,20 +42,28 @@ const { getTotalBreeds } = require("../functions/breeds");
 // } 
 
 
-router.get("", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
    try {
     let name = req.query.name;
     let breeds = await getTotalBreeds();
     if (name) {
-        let breedName = await breeds.filter(el => {
-            el.name.toLowerCase().includes(name);
+        const getUrl = await axios.get("https://api.thedogapi.com/v1/breeds",
+    {headers: {"x-api-key": `${API_KEY}` } });
+    const breed = getUrl.data?.map((el) => {
+        return el.name
+    })    
+    let breedName = await breed.filter(el => {
+            if (el.toLowerCase().includes(name.toLowerCase())) {
+                return el;
+            }
         });
-        if(breedName.length > 0) { 
-            return res.status(200).send(breedName);
+        
+        if(breedName.length) { 
+            return res.send(breedName);
         } 
-        // else {
-        // //     return res.status(404).send("don't have that breed");
-        // // }
+        else {
+            return res.status(404).send("don't have that breed");
+        }
     }
     return res.status(200).send(breeds);
    } catch (err) {
@@ -65,8 +73,46 @@ router.get("", async (req, res, next) => {
     
 });
 
-router.get("/{idRaza}", (req, res, next) => {
-    res.send("soy get por id");
+router.get("/:idRaza", async (req, res, next) => {
+    try {
+    const id = req.params.idRaza;
+    const getUrl = await axios.get("https://api.thedogapi.com/v1/breeds",
+    {headers: {"x-api-key": `${API_KEY}` } });
+    // console.log(getUrl.data);
+    const filterIdApi = getUrl.data.filter((el) => el.id == id);
+    const breedApi = await filterIdApi.map((el) => { 
+            return {
+                name: el.name,
+                weight: el.weight.metric,
+                image: el.image.url,
+                temperament: el.temperament.split(", "),
+                height: el.height.metric,
+                life_span: el.life_span,
+            };
+    });
+    if (breedApi.length > 0) return res.status(200).send(breedApi);
+
+    const getInfoBreed = await Breed.findAll({
+        where: {
+            id: id
+        },attributes: {exclude: ["created", "createdAt", "updatedAt", "id"]},
+        include: {
+            model: Temperament,
+            attributes: ["name"],
+            through: { 
+                attributes: [],
+            },
+        }
+    });
+    if (getInfoBreed.length) {
+        res.status(200).send(getInfoBreed);
+    } else {
+        res.status(404).send("breed not found");
+    }
+} catch (err) {
+    next(err);
+}
+    
 });
 
 

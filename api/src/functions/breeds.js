@@ -10,10 +10,9 @@ const getTotalBreeds = async (req, res, next) => {
     const getInfoApi = await getUrl.data.map((el) => {
         return {
             name: el.name,
-            id: el.image.id,
             weight: el.weight.metric,
-            height: el.height.metric,
-            lifespan: el.life_span,
+            image: el.image.url,
+            temperament: el.temperament
         }
     });
     const getDbInfo = await Breed.findAll({

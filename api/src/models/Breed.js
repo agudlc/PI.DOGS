@@ -8,6 +8,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
     }
     , name: {
       type: DataTypes.STRING,
@@ -21,7 +22,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lifeSpan: {
+    life_span: {
       type: DataTypes.STRING
     },
     created: {

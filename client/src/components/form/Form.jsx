@@ -28,6 +28,11 @@ export default function Form () {
                 <input name="weight" value={breed.weight} onChange={handleChangue}></input>
                 <label>lifespan</label>
                 <input name="life_span" value={breed.life_span} onChange={handleChangue}></input>
+                <select >
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
             </form>
         </div>
     )

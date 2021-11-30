@@ -9,6 +9,7 @@ const getTotalBreeds = async (req, res, next) => {
     {headers: {"x-api-key": `${API_KEY}` } });
     const getInfoApi = await getUrl.data.map((el) => {
         return {
+            id: el.id,
             name: el.name,
             weight: el.weight.metric,
             image: el.image.url,

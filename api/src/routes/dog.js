@@ -9,12 +9,14 @@ router.post("/", async (req, res, next) => {
         const newBreed = await Breed.create({
             name, height, weight, life_span, created
         });
-        let temperamentDb = await Temperament.findAll({
-            where: {name: temperament}
+        await temperament.forEach(async (temperament) => {
+            let temperamentDb = await Temperament.findAll({
+                where: {name: temperament}
+            });
+            return await newBreed.addTemperament(temperamentDb);
         });
-        await newBreed.addTemperament(temperamentDb);
-
-        res.status(200).send(newBreed);
+         
+        res.status(200).send("New good boy in town");
         } else {
             res.send("the breed is not valid");
         }

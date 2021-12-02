@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Breed from "./Breed";
 import {Link} from "react-router-dom";
 
 export default function AllBreeds () {
 const state = useSelector((state) => state.breeds);
+useEffect(() => {
+
+}, [state])
 
     return (
         <div>

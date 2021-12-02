@@ -5,6 +5,7 @@ import {getBreeds} from "./redux/actions/index"
 import AllBreeds from './components/AllBreeds';
 import { Route } from 'react-router-dom';
 import Form from './components/form/Form';
+import AlphabeticSort from './components/sort and filters.jsx/AlphabeticSort';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <h1>Henry Dogs</h1>
+      <AlphabeticSort/>
       <Route exact path="/" component={AllBreeds}/>
       <Route path="/create" component={Form}/>
     </div>

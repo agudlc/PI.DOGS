@@ -1,14 +1,16 @@
 import axios from "axios";
 
 export const GET_BREEDS = "GET_BREEDS";
-export const GET_BREEDS_FILTER_TEMP = "GET_BREEDS_FILTER_TEMP";
+export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const GET_BREEDS_FILTER_DB = "GET_BREEDS_FILTER_DB";
-export const ALPHABETIC_SORT = "ALPHABETIC_SORT";
+export const ALPHABETIC_ASC_SORT = "ALPHABETIC_ASC_SORT";
+export const ALPHABETIC_DES_SORT = "ALPHABETIC_DES_SORT";
 export const WEIGHT_SORT = "WEIGHT_SORT";
 export const SEARCH_BREED = "SEARCH_BREED";
 export const GET_BREED_DETAIL = "GET_BREED_DETAIL";
 export const BREED_CREATE = "BREED_CREATE";
 export const URL_GET = "http://localhost:3001/api/dogs";
+export const URL_GET_TEMPERAMENTS = "http://localhost:3001/api/temperament";
 
 export function getBreeds() {
     return async function (dispatch) {
@@ -17,6 +19,31 @@ export function getBreeds() {
             type: GET_BREEDS,
             payload: get.data,
         }) 
+    }
+};
+
+export function getTemperaments() {
+    return async function (dispatch) {
+        let get = await axios.get(URL_GET_TEMPERAMENTS);
+        dispatch({
+            type: GET_TEMPERAMENTS,
+            payload: get.data,
+        })
+    }
+};
+
+export function alphabeticAscSort() {
+    return {
+        type: ALPHABETIC_ASC_SORT,
+        payload: null,
+    }
+
+}
+
+export function alphabeticDesSort () {
+    return {
+        type: ALPHABETIC_DES_SORT,
+        payload: null,
     }
 }
 

@@ -1,10 +1,11 @@
-import { ALPHABETIC_ASC_SORT, ALPHABETIC_DES_SORT, GET_BREEDS } from "../actions";
+import { ALPHABETIC_ASC_SORT, ALPHABETIC_DES_SORT, GET_BREEDS, GET_BREED_SEARCH } from "../actions";
 import { GET_TEMPERAMENTS } from "../actions";
 
 
 const initialState= {
     all: [],
     breeds: [],
+    breedSearch: [],
     breedDetail: {},
     temperament: [],
 }
@@ -23,6 +24,11 @@ export default function rootReducer(state = initialState, action) {
             ...state,
             temperament: action.payload,
         };
+        case GET_BREED_SEARCH:
+            return {
+                ...state,
+                breedSearch: action.payload,
+            }
         case ALPHABETIC_ASC_SORT:
             return {
                 ...state,

@@ -50,10 +50,13 @@ router.get("/", async (req, res, next) => {
         const getUrl = await axios.get("https://api.thedogapi.com/v1/breeds",
     {headers: {"x-api-key": `${API_KEY}` } });
     const breed = getUrl.data?.map((el) => {
-        return el.name
+        return {
+            name: el.name,
+            id: el.id,
+        }
     })    
     let breedName = await breed.filter(el => {
-            if (el.toLowerCase().includes(name.toLowerCase())) {
+            if (el.name.toLowerCase().includes(name.toLowerCase())) {
                 return el;
             }
         });

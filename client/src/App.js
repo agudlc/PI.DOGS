@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <h1>Henry Dogs</h1>
-      <Route path="/dog/breed" component={Breed}/>
+      <Route path="/dog/" component={Breed}/>
       <Route path="/home" component={SearchBar}/>
       <Route path="/home" component={AlphabeticSort}/>
       <Route exact path="/" component={LandingPage}/>

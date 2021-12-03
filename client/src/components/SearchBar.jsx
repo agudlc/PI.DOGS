@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getBreedSearch } from "../redux/actions";
 
 export default function SearchBar() {
+
+    const dispatch = useDispatch();
+    const stateBreedSearch = useSelector((state) => state.breedSearch);
     
     const [breed, setBreed] = useState({
-     name: "",   
+     name: "",
+     search: [],  
     });
-
-    const history= useHistory();
 
     const handleChange = (e) => {
         setBreed({
@@ -16,15 +20,27 @@ export default function SearchBar() {
         })
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit =  (e)  => {
         e.preventDefault();
-        
-    }
+        dispatch(getBreedSearch(breed.name));
+        setBreed({
+            ...breed,
+            search: stateBreedSearch})
+               
+    };
+
+    
     
     return (
+        <div>
         <form onSubmit={handleSubmit}>
             <input name="name" value={breed.name} type="text" placeholder="Search a breed" onChange={handleChange} />
             <button type="submit" ></button>
         </form>
+        <div>{
+            breed.search?.map((el) => <Link to={`http://localhost:3001/home/dog/${el.id}`} key={el.id}>{el.name}</Link>)
+            }</div>
+        </div>
+        
     )
 }

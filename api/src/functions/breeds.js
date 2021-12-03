@@ -13,7 +13,8 @@ const getTotalBreeds = async (req, res, next) => {
             name: el.name,
             weight: el.weight.metric,
             image: el.image.url,
-            temperament: el.temperament
+            temperament: el.temperament,
+            created: el.created? true : false,
         }
     });
     const getDbInfo = await Breed.findAll({

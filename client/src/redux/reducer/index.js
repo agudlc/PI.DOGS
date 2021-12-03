@@ -1,4 +1,4 @@
-import { ALPHABETIC_ASC_SORT, ALPHABETIC_DES_SORT, GET_BREEDS, GET_BREED_SEARCH } from "../actions";
+import { ALPHABETIC_ASC_SORT, ALPHABETIC_DES_SORT, GET_BREEDS, GET_BREEDS_FILTER_DB, GET_BREED_SEARCH, GET_TEMPERAMENT_FILTER } from "../actions";
 import { GET_TEMPERAMENTS } from "../actions";
 
 
@@ -46,6 +46,26 @@ export default function rootReducer(state = initialState, action) {
                     if(a.name.toLowerCase() < b.name.toLowerCase()) { return 1; };
                     return 0;
                 })
+            }
+        case GET_BREEDS_FILTER_DB:
+            return {
+                ...state,
+                breeds: state.breeds.filter((el) => {
+                    return el.created
+            }),
+            }
+        case GET_TEMPERAMENT_FILTER:
+            return {
+                ...state,
+                breeds: state.breeds.filter( (el) => {
+                        if (el.temperaments) { 
+                            return el.temperaments.map((el) => {
+                                return el.name.includes(action.payload)
+                            })
+                        } else {
+                            return el.temperament.includes(action.payload)
+                        }
+            })
             }
         default: return state
     }

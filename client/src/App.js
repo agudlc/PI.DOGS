@@ -9,6 +9,8 @@ import AlphabeticSort from './components/sort and filters.jsx/AlphabeticSort';
 import LandingPage from './components/LandingPage';
 import SearchBar from './components/SearchBar';
 import Breed from './components/Breed';
+import ExistentBreedFilter from './components/sort and filters.jsx/ExistentBreedFilter';
+import TemperamentFilter from './components/sort and filters.jsx/TemperamentFilter';
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
   return (
     <div className="App">
       <h1>Henry Dogs</h1>
+      <Route path="/home" component={TemperamentFilter}/>
+      <Route path="/home" component={ExistentBreedFilter}/>
       <Route path="/dog/" component={Breed}/>
       <Route path="/home" component={SearchBar}/>
       <Route path="/home" component={AlphabeticSort}/>

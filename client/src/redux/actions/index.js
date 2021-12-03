@@ -5,6 +5,7 @@ export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const GET_BREED_DETAIL = "GET_BREED_DETAIL";
 export const GET_BREED_SEARCH = "GET_BREED_SEARCH";
 export const GET_BREEDS_FILTER_DB = "GET_BREEDS_FILTER_DB";
+export const GET_TEMPERAMENT_FILTER = "GET_TEMPERAMENT_FILTER";
 export const ALPHABETIC_ASC_SORT = "ALPHABETIC_ASC_SORT";
 export const ALPHABETIC_DES_SORT = "ALPHABETIC_DES_SORT";
 export const WEIGHT_SORT = "WEIGHT_SORT";
@@ -56,6 +57,20 @@ export function alphabeticDesSort () {
     return {
         type: ALPHABETIC_DES_SORT,
         payload: null,
+    }
+}
+
+export function existentBreedFilter() {
+    return {
+        type: GET_BREEDS_FILTER_DB,
+        payload: null,
+    }
+}
+
+export function temperamentFilter(temperament) {
+    return {
+        type: GET_TEMPERAMENT_FILTER,
+        payload: temperament,
     }
 }
 

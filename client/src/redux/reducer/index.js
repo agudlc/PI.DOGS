@@ -8,6 +8,7 @@ const initialState= {
     breedSearch: [],
     breedDetail: {},
     temperament: [],
+    temperamentSearch: [],
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -54,11 +55,22 @@ export default function rootReducer(state = initialState, action) {
                     return el.created
             }),
             }
-        // case GET_TEMPERAMENT_FILTER:
-        // return {
-        //         ...state,
-        //         breeds: state.breeds.filter(el => el.temperament.toLowerCase().includes(action.payload))
-        //     }
+        case GET_TEMPERAMENT_FILTER:
+        return {
+                ...state,
+                breeds: state.breeds.filter(el => {
+                    if (el.temperament) {
+                        let temp = el.temperament.includes(action.payload);
+                        return temp ? true: false;
+                    } else if (el.temperaments) {
+                        let temp = el.temperaments.map(el => el.name);
+                        let check = temp.includes(action.payload);
+                        return check ? true: false;
+                    }
+                    return false;
+                    
+                })
+            }
         default: return state
-    }
+    } 
 }

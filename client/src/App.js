@@ -6,6 +6,9 @@ import AllBreeds from './components/AllBreeds';
 import { Route } from 'react-router-dom';
 import Form from './components/form/Form';
 import AlphabeticSort from './components/sort and filters.jsx/AlphabeticSort';
+import LandingPage from './components/LandingPage';
+import SearchBar from './components/SearchBar';
+import Breed from './components/Breed';
 
 
 function App() {
@@ -19,9 +22,12 @@ function App() {
   return (
     <div className="App">
       <h1>Henry Dogs</h1>
-      <AlphabeticSort/>
-      <Route exact path="/" component={AllBreeds}/>
-      <Route path="/create" component={Form}/>
+      <Route path="/dog/breed" component={Breed}/>
+      <Route path="/home" component={SearchBar}/>
+      <Route path="/home" component={AlphabeticSort}/>
+      <Route exact path="/" component={LandingPage}/>
+      <Route exact path="/home" component={AllBreeds}/>
+      <Route path="/home/create" component={Form}/>
     </div>
   );
 }

@@ -11,6 +11,7 @@ import SearchBar from './components/SearchBar';
 import Breed from './components/Breed';
 import ExistentBreedFilter from './components/sort and filters.jsx/ExistentBreedFilter';
 import TemperamentFilter from './components/sort and filters.jsx/TemperamentFilter';
+import WeightSort from './components/sort and filters.jsx/WeightSort';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <h1>Henry Dogs</h1>
+      <Route path="/home" component={WeightSort}/>
       <Route path="/home" component={TemperamentFilter}/>
       <Route path="/home" component={ExistentBreedFilter}/>
       <Route path="/dog/" component={Breed}/>

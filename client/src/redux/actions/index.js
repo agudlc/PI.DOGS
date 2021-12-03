@@ -8,9 +8,8 @@ export const GET_BREEDS_FILTER_DB = "GET_BREEDS_FILTER_DB";
 export const GET_TEMPERAMENT_FILTER = "GET_TEMPERAMENT_FILTER";
 export const ALPHABETIC_ASC_SORT = "ALPHABETIC_ASC_SORT";
 export const ALPHABETIC_DES_SORT = "ALPHABETIC_DES_SORT";
-export const WEIGHT_SORT = "WEIGHT_SORT";
-export const SEARCH_BREED = "SEARCH_BREED";
-export const BREED_CREATE = "BREED_CREATE";
+export const WEIGHT_SORT_ASC = "WEIGHT_SORT_ASC";
+export const WEIGHT_SORT_DES = "WEIGHT_SORT_DES";
 export const URL_GET = "http://localhost:3001/api/dogs";
 export const URL_GET_TEMPERAMENTS = "http://localhost:3001/api/temperament";
 
@@ -74,5 +73,17 @@ export function temperamentFilter(temperament) {
     }
 }
 
+export function weightSortAsc(){
+    return {
+        type: WEIGHT_SORT_ASC,
+        payload: null,
+    }
+}
 
+export function weightSortDes(){
+    return {
+        type: WEIGHT_SORT_DES,
+        payload: null,
+    }
+}
 

@@ -54,19 +54,11 @@ export default function rootReducer(state = initialState, action) {
                     return el.created
             }),
             }
-        case GET_TEMPERAMENT_FILTER:
-            return {
-                ...state,
-                breeds: state.breeds.filter( (el) => {
-                        if (el.temperaments) { 
-                            return el.temperaments.map((el) => {
-                                return el.name.includes(action.payload)
-                            })
-                        } else {
-                            return el.temperament.includes(action.payload)
-                        }
-            })
-            }
+        // case GET_TEMPERAMENT_FILTER:
+        // return {
+        //         ...state,
+        //         breeds: state.breeds.filter(el => el.temperament.toLowerCase().includes(action.payload))
+        //     }
         default: return state
     }
 }

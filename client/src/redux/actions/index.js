@@ -87,3 +87,13 @@ export function weightSortDes(){
     }
 }
 
+export function breedDetail(id) {
+    return async function (dispatch) {
+        let get = await axios.get(`http://localhost:3001/api/dogs/${id}`);
+        let find = get.data.find(el => el);
+        dispatch({
+            type: GET_BREED_DETAIL,
+            payload: find,
+        })
+    }
+}

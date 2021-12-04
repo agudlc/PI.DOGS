@@ -85,10 +85,11 @@ router.get("/:idRaza", async (req, res, next) => {
     const filterIdApi = getUrl.data.filter((el) => el.id == id);
     const breedApi = await filterIdApi.map((el) => { 
             return {
+                id: el.id,
                 name: el.name,
                 weight: el.weight.metric,
                 image: el.image.url,
-                temperament: el.temperament.split(", "),
+                temperament: el.temperament,
                 height: el.height.metric,
                 life_span: el.life_span,
             };

@@ -20,7 +20,7 @@ const paginate = (pageNumber) => {
   useEffect(() => {
 
   }, [])
-
+//   ${breed.id}
     return (
         <div>
             <div>

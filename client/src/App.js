@@ -8,10 +8,11 @@ import Form from './components/form/Form';
 import AlphabeticSort from './components/sort and filters.jsx/AlphabeticSort';
 import LandingPage from './components/LandingPage';
 import SearchBar from './components/SearchBar';
-import Breed from './components/Breed';
+// import Breed from './components/Breed';
 import ExistentBreedFilter from './components/sort and filters.jsx/ExistentBreedFilter';
 import TemperamentFilter from './components/sort and filters.jsx/TemperamentFilter';
 import WeightSort from './components/sort and filters.jsx/WeightSort';
+import BreedDetail from './components/BreedDetail';
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
       <Route path="/home" component={WeightSort}/>
       <Route path="/home" component={TemperamentFilter}/>
       <Route path="/home" component={ExistentBreedFilter}/>
-      <Route path="/dog/" component={Breed}/>
+      <Route exact path="/dogs/:id" component={BreedDetail}/>
       <Route path="/home" component={SearchBar}/>
       <Route path="/home" component={AlphabeticSort}/>
       <Route exact path="/" component={LandingPage}/>

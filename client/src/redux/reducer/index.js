@@ -1,4 +1,4 @@
-import { ALPHABETIC_ASC_SORT, ALPHABETIC_DES_SORT, GET_BREEDS, GET_BREEDS_FILTER_DB, GET_BREED_SEARCH, GET_TEMPERAMENT_FILTER, WEIGHT_SORT_ASC, WEIGHT_SORT_DES } from "../actions";
+import { ALPHABETIC_ASC_SORT, ALPHABETIC_DES_SORT, GET_BREEDS, GET_BREEDS_FILTER_DB, GET_BREED_DETAIL, GET_BREED_SEARCH, GET_TEMPERAMENT_FILTER, WEIGHT_SORT_ASC, WEIGHT_SORT_DES } from "../actions";
 import { GET_TEMPERAMENTS } from "../actions";
 
 
@@ -72,6 +72,8 @@ export default function rootReducer(state = initialState, action) {
                 })
             }
             case WEIGHT_SORT_ASC:
+            
+            
             return {
                 ...state,
                 breeds: state.breeds.sort((a,b) => {
@@ -89,6 +91,11 @@ export default function rootReducer(state = initialState, action) {
                     return 0;
                 })
             };
+            case GET_BREED_DETAIL:
+                return {
+                    ...state,
+                    breedDetail: action.payload,
+                }
         default: return state
     } 
 }

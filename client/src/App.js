@@ -18,9 +18,13 @@ function App() {
 
   const dispatch = useDispatch();
 
+  
+
   useEffect(() => {
     dispatch(getBreeds());
   }, [dispatch]);
+
+  
 
   return (
     <div className="App">

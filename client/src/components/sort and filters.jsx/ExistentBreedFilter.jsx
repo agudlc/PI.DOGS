@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { existentBreedFilter, getBreeds } from "../../redux/actions";
+import {Link} from "react-router-dom";
 
 export default function ExistentBreedFilter() {
     
@@ -19,6 +20,9 @@ export default function ExistentBreedFilter() {
     <div onClick={handleClick}>
         <button type="button" value="created">Breeds created</button>
         <button type="button" value="all">All breeds</button>
+        <Link to={"/create"}>
+        <button type="button">Create a Breed</button>
+        </Link>
     </div>
     )
 }

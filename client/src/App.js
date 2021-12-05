@@ -38,7 +38,7 @@ function App() {
       <Route path="/home" component={AlphabeticSort}/>
       <Route exact path="/" component={LandingPage}/>
       <Route exact path="/home" component={AllBreeds}/>
-      <Route path="/home/create" component={Form}/>
+      <Route path="/create" component={Form}/>
     </div>
   );
 }

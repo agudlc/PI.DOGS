@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { breedDetail } from "../redux/actions";
+import { breedDetail } from "../../redux/actions";
 
 export default function BreedDetail() {
-    // console.log(props)
     const dispatch = useDispatch();
-
+    const state = useSelector((state) => state.breedDetail);
     const {id}= useParams();
     useEffect(() => {
         dispatch(breedDetail(id))
     }, [dispatch, id])
     
-    const state = useSelector((state) => state.breedDetail);
+    
     return ( 
     <div>
         <h1>{state.name}</h1>

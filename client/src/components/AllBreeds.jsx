@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, {  Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Breed from "./Breed";
 import {Link} from "react-router-dom";
@@ -24,18 +24,20 @@ const paginate = (pageNumber) => {
     return (
         <div>
             <div>
-        <Paginate
-        breedsPerPage={breedsPerPage}
-        state={state.length}
-        paginate={paginate}/>
-        </div>
-        <div>
+             <Fragment>
+             <Paginate
+             breedsPerPage={breedsPerPage}
+             state={state.length}
+             paginate={paginate}/>
+             </Fragment>
+            </div>
+            <div>
             {currentBreeds?.map(breed => 
                 <Link to={`/dogs/${breed.id}`} key={breed.id}>
                     <Breed id={breed.id} name={breed.name} weight={breed.weight[0]+ " Kg" + breed.weight[1]+ breed.weight[2] + " Kg"} image={breed.image}/>
                 </Link >
             )}
-        </div>
+            </div>
         </div>
     )
 }

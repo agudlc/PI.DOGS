@@ -1,8 +1,7 @@
 import React from "react";
-import styles from "../modules/Paginate.module.css"
+import styles from "./modules/Paginate.module.css"
 
 export default function Paginate({breedsPerPage,state, paginate}) {
-    // const state = useSelector(state => state.breeds);
     
     let pageNumbers = [];
 

@@ -87,11 +87,12 @@ router.get("/:idRaza", async (req, res, next) => {
             return {
                 id: el.id,
                 name: el.name,
-                weight: el.weight.metric,
+                weight: el.weight.metric.split(" "),
                 image: el.image.url,
                 temperament: el.temperament,
                 height: el.height.metric,
                 life_span: el.life_span,
+                created: false,
             };
     });
     if (breedApi.length > 0) return res.status(200).send(breedApi);
@@ -99,7 +100,7 @@ router.get("/:idRaza", async (req, res, next) => {
     const getInfoBreed = await Breed.findAll({
         where: {
             id: id
-        },attributes: {exclude: ["created", "createdAt", "updatedAt", "id"]},
+        },attributes: {exclude: ["createdAt", "updatedAt", "id"]},
         include: {
             model: Temperament,
             attributes: ["name"],

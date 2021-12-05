@@ -16,6 +16,7 @@ export default function BreedDetail() {
                 <Link to="/home">
                 <button>GO BACK</button>
                 </Link>
+                <div>
                 <h1>{state.name}</h1>
                 <img src={state.image? state.image : "https://i.ytimg.com/vi/A-sO9__4Cis/hqdefault.jpg"} alt="Doggie" width="450px" height="300px" />
                 <h3>Temperaments</h3>
@@ -27,7 +28,7 @@ export default function BreedDetail() {
                 <span>{state.height}</span>
                 <h3>lifeSpan</h3>
                 <span>{state.life_span}</span>
-
+                </div>
             
             </div>
    )

@@ -38,10 +38,11 @@ export default function Form () {
         await axios.post("http://localhost:3001/api/dog", breed);
         setBreed({
                 name: "",
-                height: "",
+                heightMin: "",
+                heightMax: "",
                 weightMin: "",
                 weightMax: "",
-                life_span: "",
+                lifespan: "",
                 created: true,
                 temperament: [],
             });
@@ -61,14 +62,16 @@ export default function Form () {
             <form onSubmit={handleSubmit}>
                 <label>name</label>
                 <input name="name" value={breed.name} onChange={handleChangue}></input>
-                <label>height</label>
-                <input name="height" value={breed.height} onChange={handleChangue}></input>
+                <label>heightMin</label>
+                <input name="heightMin" value={breed.heightMin} onChange={handleChangue}></input>
+                <label>heightMax</label>
+                <input name="heightMax" value={breed.heightMax} onChange={handleChangue}></input>
                 <label>weightMin</label>
                 <input name="weightMin" value={breed.weightMin} onChange={handleChangue}></input>
                 <label>weightMax</label>
                 <input name="weightMax" value={breed.weightMax} onChange={handleChangue}></input>
                 <label>lifespan</label>
-                <input name="life_span" value={breed.life_span} onChange={handleChangue}></input>
+                <input name="lifespan" value={breed.lifespan} onChange={handleChangue}></input>
                 <select name="temperament" onChange={handleSelect}>{stateTemperament.map((temperaments) =>
                    <option key={temperaments.id} value={temperaments.name}>{temperaments.name}</option>
                 )}

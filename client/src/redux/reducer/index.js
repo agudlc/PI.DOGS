@@ -6,7 +6,7 @@ const initialState= {
     all: [],
     breeds: [],
     breedSearch: [],
-    breedDetail: {},
+    breedDetail: [],
     setFalse: false,
     temperament: [],
     temperamentSearch: [],

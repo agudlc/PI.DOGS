@@ -6,10 +6,10 @@ export const GET_BREED_DETAIL = "GET_BREED_DETAIL";
 export const GET_BREED_SEARCH = "GET_BREED_SEARCH";
 export const GET_BREEDS_FILTER_DB = "GET_BREEDS_FILTER_DB";
 export const GET_TEMPERAMENT_FILTER = "GET_TEMPERAMENT_FILTER";
-export const ALPHABETIC_ASC_SORT = "ALPHABETIC_ASC_SORT";
-export const ALPHABETIC_DES_SORT = "ALPHABETIC_DES_SORT";
-export const WEIGHT_SORT_ASC = "WEIGHT_SORT_ASC";
-export const WEIGHT_SORT_DES = "WEIGHT_SORT_DES";
+export const ALPHABETIC_SORT = "ALPHABETIC_SORT";
+export const WEIGHT_SORT = "WEIGHT_SORT";
+export const SET_TRUE = "SET_TRUE";
+export const SET_FALSE = "SET_FALSE";
 export const URL_GET = "http://localhost:3001/api/dogs";
 export const URL_GET_TEMPERAMENTS = "http://localhost:3001/api/temperament";
 
@@ -44,19 +44,12 @@ export function getBreedSearch(url) {
 }
 
 
-export function alphabeticAscSort() {
+export function alphabeticSort(payload) {
     return {
-        type: ALPHABETIC_ASC_SORT,
-        payload: null,
+        type: ALPHABETIC_SORT,
+        payload,
     }
 
-}
-
-export function alphabeticDesSort () {
-    return {
-        type: ALPHABETIC_DES_SORT,
-        payload: null,
-    }
 }
 
 export function existentBreedFilter() {
@@ -73,17 +66,10 @@ export function temperamentFilter(temperament) {
     }
 }
 
-export function weightSortAsc(){
+export function weightSort(payload){
     return {
-        type: WEIGHT_SORT_ASC,
-        payload: null,
-    }
-}
-
-export function weightSortDes(){
-    return {
-        type: WEIGHT_SORT_DES,
-        payload: null,
+        type: WEIGHT_SORT,
+        payload,
     }
 }
 
@@ -95,5 +81,19 @@ export function breedDetail(id) {
             type: GET_BREED_DETAIL,
             payload: find,
         })
+    }
+}
+
+export function setTrue() {
+    return {
+        type: SET_TRUE,
+        payload: null
+    }
+}
+
+export function setFalse() {
+    return {
+        type: SET_FALSE,
+        payload: null
     }
 }

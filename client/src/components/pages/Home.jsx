@@ -11,12 +11,11 @@ export default function Home() {
     const dispatch = useDispatch();
 
   
-
   useEffect(() => {
     dispatch(getBreeds());
-  }, [dispatch]);
-
-    return (
+  }, [dispatch])
+  
+  return (
         <div>
             <Fragment>
             <Nav/>

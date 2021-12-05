@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, {  useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  getTemperaments, temperamentFilter } from "../../redux/actions";
 
@@ -8,28 +8,13 @@ export default function TemperamentFilter() {
 
     const dispatch = useDispatch();
 
-    
-    
-    const [ searchTemperament, setTemperament] = useState({
-        temperament: "",
-    });
-
    const handleChange = (e) => {
-       setTemperament({
-           temperament: e.target.value,
-           
-       })
-   }
-   const handleSubmit = (e) => {
        e.preventDefault();
-       console.log(searchTemperament.temperament);
-       dispatch(temperamentFilter(searchTemperament.temperament));
+       dispatch(temperamentFilter(e.target.value));
    }
    useEffect(() => {
     dispatch(getTemperaments());
 }, [dispatch]);
-
-    
     
     return (
         <div >
@@ -37,7 +22,7 @@ export default function TemperamentFilter() {
             <select name="temperament" onChange={handleChange} >{stateTemperament.map((temperaments) =>
                    <option key={temperaments.id} value={temperaments.name}>{temperaments.name}</option>)}
             </select>
-            <button type="submit" onClick={handleSubmit} >Search</button>
+            
         </div>
     )
 }

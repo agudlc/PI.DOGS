@@ -1,20 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { weightSortAsc, weightSortDes } from "../../redux/actions";
+import { useDispatch, } from "react-redux";
+import { setTrue, weightSort } from "../../redux/actions";
 
 
 export default function WeightSort() {
     const dispatch = useDispatch();
-    
+
     function handleChange (e) {
-        if (e.target.value === "A") {
-        dispatch(weightSortAsc());
-       } else if (e.target.value === "D") {
-           dispatch(weightSortDes());
-       } else {
-           return
-       }
-   }  
+        e.preventDefault();
+        dispatch(weightSort(e.target.value));
+        dispatch(setTrue());
+   }
     
     return (
             <div>

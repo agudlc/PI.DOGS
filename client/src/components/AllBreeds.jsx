@@ -1,11 +1,15 @@
 import React, {  Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Breed from "./Breed";
 import {Link} from "react-router-dom";
 import Paginate from "./Paginate";
+import { setFalse } from "../redux/actions";
 
 export default function AllBreeds () {
+const dispatch = useDispatch();
 const state = useSelector((state) => state.breeds);
+const stateFalse = useSelector(state => state.setFalse);
+const [ trui, setTrue] = useState("");
 
 const [currentPage, setCurrentPage ] = useState(1);
 const [breedsPerPage] = useState(8);
@@ -17,10 +21,15 @@ const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
 
-  useEffect(() => {
+useEffect(() => {
+    setCurrentPage(1);
+    dispatch(setFalse());
+    console.log(trui);
+}, [state, trui]);
+useEffect(() => {
+    setTrue("Sort");
+}, [stateFalse])
 
-  }, [])
-//   ${breed.id}
     return (
         <div>
             <div>

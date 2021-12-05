@@ -38,7 +38,7 @@ export default function SearchBar() {
             <button type="submit" ></button>
         </form>
         <div>{
-            breed.search?.map((el) => <Link to={`http://localhost:3001/home/dog/${el.id}`} key={el.id}>{el.name}</Link>)
+            breed.search?.map((el) => <Link to={`dogs/${el.id}`} key={el.id}>{el.name}</Link>)
             }</div>
         </div>
         

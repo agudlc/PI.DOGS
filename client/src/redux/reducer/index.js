@@ -1,4 +1,4 @@
-import { ALPHABETIC_ASC_SORT, ALPHABETIC_DES_SORT, GET_BREEDS, GET_BREEDS_FILTER_DB, GET_BREED_DETAIL, GET_BREED_SEARCH, GET_TEMPERAMENT_FILTER, WEIGHT_SORT_ASC, WEIGHT_SORT_DES } from "../actions";
+import { ALPHABETIC_SORT, GET_BREEDS, GET_BREEDS_FILTER_DB, GET_BREED_DETAIL, GET_BREED_SEARCH, GET_TEMPERAMENT_FILTER, SET_FALSE, SET_TRUE, WEIGHT_SORT } from "../actions";
 import { GET_TEMPERAMENTS } from "../actions";
 
 
@@ -7,6 +7,7 @@ const initialState= {
     breeds: [],
     breedSearch: [],
     breedDetail: {},
+    setFalse: false,
     temperament: [],
     temperamentSearch: [],
 }
@@ -30,84 +31,92 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 breedSearch: action.payload,
             }
-        case ALPHABETIC_ASC_SORT:
+        case ALPHABETIC_SORT:
+            let alphabeticSort = action.payload === "A" ? state.breeds.sort((a,b) => {
+                if(a.name.toLowerCase() < b.name.toLowerCase()) { return -1; };
+                if(a.name.toLowerCase() > b.name.toLowerCase()) { return 1; };
+                return 0;
+            }) : state.breeds.sort((a,b) => {
+                            if(a.name.toLowerCase() > b.name.toLowerCase()) { return -1; };
+                            if(a.name.toLowerCase() < b.name.toLowerCase()) { return 1; };
+                            return 0;
+                        })
             return {
                 ...state,
-                breeds: state.breeds.sort((a,b) => {
-                    if(a.name.toLowerCase() < b.name.toLowerCase()) { return -1; };
-                    if(a.name.toLowerCase() > b.name.toLowerCase()) { return 1; };
-                    return 0;
-                })
+                breeds: alphabeticSort,
             };
-        case ALPHABETIC_DES_SORT:
-            return {
-                ...state,
-                breeds: state.breeds.sort((a,b) => {
-                    if(a.name.toLowerCase() > b.name.toLowerCase()) { return -1; };
-                    if(a.name.toLowerCase() < b.name.toLowerCase()) { return 1; };
-                    return 0;
-                })
-            }
         case GET_BREEDS_FILTER_DB:
+            let all = state.all;
+            let filter = all.filter((el) => {
+                return el.created
+            });
             return {
                 ...state,
-                breeds: state.breeds.filter((el) => {
-                    return el.created
-            }),
+                breeds: filter,
             }
         case GET_TEMPERAMENT_FILTER:
-        return {
-                ...state,
-                breeds: state.breeds.filter(el => {
-                    if (el.temperament) {
-                        let temp = el.temperament.includes(action.payload);
-                        return temp ? true: false;
-                    } else if (el.temperaments) {
-                        let temp = el.temperaments.map(el => el.name);
-                        let check = temp.includes(action.payload);
-                        return check ? true: false;
-                    }
-                    return false;
-                    
-                })
-            }
-            case WEIGHT_SORT_ASC:
-            return {
-                ...state,
-                breeds: state.breeds.sort((a,b) => {
-                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
-                        return 0;
-                    }
-                    if(!isFinite(a.weight[0])) {
-                        return 1;
-                    }
-                    if(!isFinite(b.weight[0])) {
-                        return -1;
-                    }
-                    return a.weight[0]-b.weight[0];
-                })
-            };
-            case WEIGHT_SORT_DES:
-            return {
-                ...state,
-                breeds: state.breeds.sort((a,b) => {
-                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
-                        return 0;
-                    }
-                    if(!isFinite(a.weight[0])) {
-                        return 1;
-                    }
-                    if(!isFinite(b.weight[0])) {
-                        return -1;
-                    }
-                    return a.weight[0]-b.weight[0];
-                }).reverse(),
+            let allTemp = state.all
+            let filterTemp = allTemp.filter(el => {
+                if (el.temperament) {
+                    let temp = el.temperament.includes(action.payload);
+                    return temp ? true: false;
+                } else if (el.temperaments) {
+                    let temp = el.temperaments.map(el => el.name);
+                    let check = temp.includes(action.payload);
+                    return check ? true: false;
                 }
+                return false;
+                
+            });
+            return {
+                ...state,
+                breeds: filterTemp,
+            }
+            case WEIGHT_SORT:
+                let weightSort= action.payload === "A" ? state.breeds.sort((a,b) => {
+                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
+                        return 0;
+                    }
+                    if(!isFinite(a.weight[0])) {
+                        return 1;
+                    }
+                    if(!isFinite(b.weight[0])) {
+                        return -1;
+                    }
+                    return a.weight[0]-b.weight[0];
+                }) : state.breeds.sort((a,b) => {
+                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
+                        return 0;
+                    }
+                    if(!isFinite(a.weight[0])) {
+                        return 1;
+                    }
+                    if(!isFinite(b.weight[0])) {
+                        return -1;
+                    }
+                    return a.weight[0]-b.weight[0];
+                }).reverse();
+            
+            
+                return {
+                ...state,
+                breeds: weightSort,
+            };
             case GET_BREED_DETAIL:
                 return {
                     ...state,
                     breedDetail: action.payload,
                 }
+            case SET_TRUE:
+                return {
+                    ...state,
+                    setFalse: true,
+                }
+            case SET_FALSE:
+                    return {
+                        ...state,
+                        setFalse: false,
+                    }
         default: return state
     } 
 }

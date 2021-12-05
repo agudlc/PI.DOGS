@@ -90,7 +90,7 @@ router.get("/:idRaza", async (req, res, next) => {
                 weight: el.weight.metric.split(" "),
                 image: el.image.url,
                 temperament: el.temperament,
-                height: el.height.metric,
+                height: el.height.metric.split(" "),
                 life_span: el.life_span,
                 created: false,
             };

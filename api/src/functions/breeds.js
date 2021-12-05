@@ -11,7 +11,7 @@ const getTotalBreeds = async (req, res, next) => {
         return {
             id: el.id,
             name: el.name,
-            weight: el.weight.metric,
+            weight: el.weight.metric.split(" "),
             image: el.image.url,
             temperament: el.temperament,
             created: el.created? true : false,

@@ -32,7 +32,7 @@ const paginate = (pageNumber) => {
         <div>
             {currentBreeds?.map(breed => 
                 <Link to={`/dogs/${breed.id}`} key={breed.id}>
-                    <Breed id={breed.id} name={breed.name} weight={breed.weight} image={breed.image}/>
+                    <Breed id={breed.id} name={breed.name} weight={breed.weight[0]+ " Kg" + breed.weight[1]+ breed.weight[2] + " Kg"} image={breed.image}/>
                 </Link >
             )}
         </div>

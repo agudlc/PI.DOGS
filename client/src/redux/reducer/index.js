@@ -72,25 +72,37 @@ export default function rootReducer(state = initialState, action) {
                 })
             }
             case WEIGHT_SORT_ASC:
-            
-            
             return {
                 ...state,
                 breeds: state.breeds.sort((a,b) => {
-                    if(a.name.toLowerCase() < b.name.toLowerCase()) { return -1; };
-                    if(a.name.toLowerCase() > b.name.toLowerCase()) { return 1; };
-                    return 0;
+                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
+                        return 0;
+                    }
+                    if(!isFinite(a.weight[0])) {
+                        return 1;
+                    }
+                    if(!isFinite(b.weight[0])) {
+                        return -1;
+                    }
+                    return a.weight[0]-b.weight[0];
                 })
             };
             case WEIGHT_SORT_DES:
             return {
                 ...state,
                 breeds: state.breeds.sort((a,b) => {
-                    if(a.name.toLowerCase() < b.name.toLowerCase()) { return -1; };
-                    if(a.name.toLowerCase() > b.name.toLowerCase()) { return 1; };
-                    return 0;
-                })
-            };
+                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
+                        return 0;
+                    }
+                    if(!isFinite(a.weight[0])) {
+                        return 1;
+                    }
+                    if(!isFinite(b.weight[0])) {
+                        return -1;
+                    }
+                    return a.weight[0]-b.weight[0];
+                }).reverse(),
+                }
             case GET_BREED_DETAIL:
                 return {
                     ...state,

@@ -20,13 +20,13 @@ export default function SearchBar() {
         })
     };
 
-    const handleSubmit =  (e)  => {
+
+    const handleSubmit = (e)  => {
         e.preventDefault();
-        dispatch(getBreedSearch(breed.name));
+        dispatch(getBreedSearch(breed.name))
         setBreed({
             ...breed,
-            search: stateBreedSearch})
-               
+            search: stateBreedSearch});
     };
 
     

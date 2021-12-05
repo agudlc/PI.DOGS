@@ -25,10 +25,10 @@ useEffect(() => {
     setCurrentPage(1);
     dispatch(setFalse());
     console.log(trui);
-}, [state, trui]);
+}, [stateFalse, trui, dispatch]);
 useEffect(() => {
     setTrue("Sort");
-}, [stateFalse])
+}, [stateFalse]);
 
     return (
         <div>

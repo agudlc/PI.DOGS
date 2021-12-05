@@ -1,6 +1,6 @@
 import React, {  useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  getTemperaments, temperamentFilter } from "../../redux/actions";
+import {  getTemperaments, setTrue, temperamentFilter } from "../../redux/actions";
 
 export default function TemperamentFilter() {
     
@@ -11,6 +11,7 @@ export default function TemperamentFilter() {
    const handleChange = (e) => {
        e.preventDefault();
        dispatch(temperamentFilter(e.target.value));
+       dispatch(setTrue());
    }
    useEffect(() => {
     dispatch(getTemperaments());

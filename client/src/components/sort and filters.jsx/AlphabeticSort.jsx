@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { alphabeticSort } from "../../redux/actions";
+import { alphabeticSort, setTrue } from "../../redux/actions";
 
 
 
@@ -10,7 +10,9 @@ export default function AlphabeticSort() {
     
  function handleChange (e) {
      e.preventDefault();
-     dispatch(alphabeticSort(e.target.value))
+     dispatch(alphabeticSort(e.target.value));
+     dispatch(setTrue());
+   
 }
     
     return (

@@ -2,6 +2,7 @@ import React, { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments } from "../../redux/actions";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Form () {
 
@@ -38,7 +39,8 @@ export default function Form () {
         setBreed({
                 name: "",
                 height: "",
-                weight: "",
+                weightMin: "",
+                weightMax: "",
                 life_span: "",
                 created: true,
                 temperament: [],
@@ -53,13 +55,18 @@ export default function Form () {
 
     return (
         <div>
+                <Link to="/home">
+                <button>GO BACK</button>
+                </Link>
             <form onSubmit={handleSubmit}>
                 <label>name</label>
                 <input name="name" value={breed.name} onChange={handleChangue}></input>
                 <label>height</label>
                 <input name="height" value={breed.height} onChange={handleChangue}></input>
-                <label>weight</label>
-                <input name="weight" value={breed.weight} onChange={handleChangue}></input>
+                <label>weightMin</label>
+                <input name="weightMin" value={breed.weightMin} onChange={handleChangue}></input>
+                <label>weightMax</label>
+                <input name="weightMax" value={breed.weightMax} onChange={handleChangue}></input>
                 <label>lifespan</label>
                 <input name="life_span" value={breed.life_span} onChange={handleChangue}></input>
                 <select name="temperament" onChange={handleSelect}>{stateTemperament.map((temperaments) =>

@@ -43,7 +43,13 @@ useEffect(() => {
             <div>
             {currentBreeds?.map(breed => 
                 <Link to={`/dogs/${breed.id}`} key={breed.id}>
-                    <Breed id={breed.id} name={breed.name} weight={breed.weight[0]+ " Kg" + breed.weight[1]+ breed.weight[2] + " Kg"} image={breed.image}/>
+                    <Breed id={breed.id} 
+                    name={breed.name} 
+                    weight={breed.created? breed.weight : breed.weight[0] !== "NaN" ? 
+                    "Min: " + breed.weight[0] + " Kg" + breed.weight[1] + "Max: " + breed.weight[2] + " Kg" : "That breed is unmeasurable"}
+                    image={breed.image? breed.image : "https://i.ytimg.com/vi/A-sO9__4Cis/hqdefault.jpg"}
+                    temperament={breed.temperament? breed.temperament 
+                    : breed.temperaments? breed.temperaments.map((el) => el.name + (" ")) : "That's a misterious Breed"}/>
                 </Link >
             )}
             </div>

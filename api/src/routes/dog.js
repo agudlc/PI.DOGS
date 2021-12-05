@@ -4,7 +4,8 @@ const router = Router();
 
 router.post("/", async (req, res, next) => {
     try {
-        let { name, height, weight, life_span, temperament, created} = req.body;
+        let { name, height, weightMax, weightMin, life_span, temperament, created} = req.body;
+        let weight = `Max: ${weightMin} Kg-Min: ${weightMax} Kg`;
         if ( name && height && weight) {
         const newBreed = await Breed.create({
             name, height, weight, life_span, created
@@ -15,6 +16,7 @@ router.post("/", async (req, res, next) => {
             });
             return await newBreed.addTemperament(temperamentDb);
         });
+       
          
         res.status(200).send("New good boy in town");
         } else {

@@ -35,11 +35,14 @@ export function getTemperaments() {
 
 export function getBreedSearch(url) {
     return async function (dispatch) {
+        try {
         let get = await axios.get("http://localhost:3001/api/dogs?name=" + url);
-        dispatch({
+        return dispatch({
             type: GET_BREED_SEARCH,
             payload: get.data,
-        })
+        }); } catch (err) {
+            console.log(err);
+        }
     }
 }
 

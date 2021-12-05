@@ -19,7 +19,8 @@ export default function BreedDetail() {
                 <h1>{state.name}</h1>
                 <img src={state.image? state.image : "https://i.ytimg.com/vi/A-sO9__4Cis/hqdefault.jpg"} alt="Doggie" width="450px" height="300px" />
                 <h3>Temperaments</h3>
-                <span>{state.temperament? state.temperament : "hehe"}</span>        
+                <span>{state.temperament ? state.temperament 
+                : state.temperaments ? state.temperaments.map(el => el.name + (" ")) : "That's a misterious Breed"}</span>        
                 <h3>Weight</h3>
                 <span>{state.weight}</span>
                 <h3>Height</h3>

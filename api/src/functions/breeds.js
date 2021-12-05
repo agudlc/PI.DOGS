@@ -17,6 +17,7 @@ const getTotalBreeds = async (req, res, next) => {
             created: el.created? true : false,
         }
     });
+    // attributes: ["name"]
     const getDbInfo = await Breed.findAll({
         include: {
             model: Temperament,

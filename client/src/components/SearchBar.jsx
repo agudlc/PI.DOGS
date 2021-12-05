@@ -33,10 +33,10 @@ export default function SearchBar() {
     
     return (
         <div>
-        <form onSubmit={handleSubmit}>
+            <div>
             <input name="name" value={breed.name} type="text" placeholder="Search a breed" onChange={handleChange} />
-            <button type="submit" ></button>
-        </form>
+            <button type="submit" onClick={handleSubmit}></button>
+            </div>
         <div>{
             breed.search?.map((el) => <Link to={`dogs/${el.id}`} key={el.id}>{el.name}</Link>)
             }</div>

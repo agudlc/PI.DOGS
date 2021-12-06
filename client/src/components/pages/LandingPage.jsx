@@ -5,8 +5,14 @@ import styles  from "../modules/LandingPage.module.css";
 
 export default function LandingPage() {
     return (
-        <Link to="/home">
-        <button type="button" className={styles.button}></button>
-        </Link>
+        <div className={styles.divContainerLanding}>
+            <div>
+                <Link to="/home">
+                    <div >
+                        <button type="button" className={styles.button}>Welcome to my wisdom in the art of dog's breeds</button>
+                    </div>
+                </Link>
+            </div>
+        </div>
         )
 }

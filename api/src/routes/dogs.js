@@ -60,10 +60,24 @@ router.get("/", async (req, res, next) => {
                 return el;
             }
         });
-        
-        if(breedName.length) { 
-            return res.send(breedName);
-        } 
+        const getInfoBreed = await Breed.findAll({
+            where: {
+                name: name
+            },attributes: {exclude: [ "height","weight","life_span","createdAt", "updatedAt", "created", "temperaments"]},
+            // include: {
+            //     model: Temperament,
+            //     attributes: ["name", "id"],
+            //     through: { 
+            //         attributes: [],
+            //     },
+            // }
+        });
+
+        const breeds = breedName.concat(getInfoBreed);
+
+        if(breeds.length) { 
+            return res.send(breeds);
+        }
         else {
             return res.status(404).send("don't have that breed");
         }

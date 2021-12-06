@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getBreedSearch } from "../redux/actions";
@@ -23,13 +23,15 @@ export default function SearchBar() {
 
     const handleSubmit = (e)  => {
         e.preventDefault();
-        dispatch(getBreedSearch(breed.name))
-        setBreed({
-            ...breed,
-            search: stateBreedSearch});
+        dispatch(getBreedSearch(breed.name));
+        
     };
 
-    
+    useEffect(() => {
+        setBreed({
+            name: "",
+            search: stateBreedSearch})
+    }, [stateBreedSearch, dispatch] );
     
     return (
         <div>
@@ -38,7 +40,7 @@ export default function SearchBar() {
             <button type="submit" onClick={handleSubmit}></button>
             </div>
         <div>{
-            breed.search?.map((el) => <Link to={`dogs/${el.id}`} key={el.id}>{el.name}</Link>)
+         breed.search?.map((el) => <Link to={`dogs/${el.id}`} key={el.id}>{el.name} </Link>)
             }</div>
         </div>
         

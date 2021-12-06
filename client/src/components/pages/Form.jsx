@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments } from "../../redux/actions";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import styles from "../modules/Form.module.css"
 
 function validate(breed) {
     let errors= {};

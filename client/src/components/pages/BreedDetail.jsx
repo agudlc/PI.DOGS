@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { breedDetail, vaciate } from "../../redux/actions";
 import Breed from "../Breed";
+import styles from "../modules/BreedDetail.module.css"
 
 export default function BreedDetail() {
     const dispatch = useDispatch();
@@ -30,7 +31,8 @@ export default function BreedDetail() {
                     temperament={breed.temperament? breed.temperament 
                     : breed.temperaments? breed.temperaments.map((el) => el.name + (" ")) : "That's a misterious Breed"}
                     height={breed.created? breed.height : breed.height[2] !== undefined ? 
-                    "Min: " + breed.height[0] + " cm" + breed.height[1] + "Max: " + breed.height[2] + " cm" : breed.height[0] }/>
+                    "Min: " + breed.height[0] + " cm" + breed.height[1] + "Max: " + breed.height[2] + " cm" : breed.height[0] }
+                    life_span={breed.life_span}/>
                 </Fragment>
                 )}</div>): 
                 <div>

@@ -1,6 +1,7 @@
 import React, {  useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  getTemperaments, setTrue, temperamentFilter } from "../../redux/actions";
+import styles from "../modules/TemperamentFilter.module.css"
 
 export default function TemperamentFilter() {
     

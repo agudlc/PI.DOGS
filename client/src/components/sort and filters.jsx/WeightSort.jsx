@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, } from "react-redux";
 import { setTrue, weightSort } from "../../redux/actions";
+import styles from "../modules/WeightSort.module.css"
 
 
 export default function WeightSort() {

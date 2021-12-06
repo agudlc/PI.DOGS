@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { existentBreedFilter, getBreeds } from "../../redux/actions";
 import {Link} from "react-router-dom";
+import styles from "../modules/ExistentBreedFilter.module.css"
 
 export default function ExistentBreedFilter() {
     

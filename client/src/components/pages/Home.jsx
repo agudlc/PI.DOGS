@@ -4,6 +4,7 @@ import { getBreeds } from "../../redux/actions";
 import AllBreeds from "../AllBreeds";
 import Nav from "../Nav";
 import SearchBar from "../SearchBar";
+import styles from "../modules/Home.module.css"
 
 
 export default function Home() {

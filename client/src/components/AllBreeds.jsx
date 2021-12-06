@@ -4,6 +4,7 @@ import Breed from "./Breed";
 import {Link} from "react-router-dom";
 import Paginate from "./Paginate";
 import { setFalse } from "../redux/actions";
+import styles from "./modules/AllBreeds.module.css"
 
 export default function AllBreeds () {
 const dispatch = useDispatch();

@@ -10,8 +10,9 @@ export const ALPHABETIC_SORT = "ALPHABETIC_SORT";
 export const WEIGHT_SORT = "WEIGHT_SORT";
 export const SET_TRUE = "SET_TRUE";
 export const SET_FALSE = "SET_FALSE";
-export const URL_GET = "http://localhost:3001/api/dogs";
-export const URL_GET_TEMPERAMENTS = "http://localhost:3001/api/temperament";
+export const VACIATE = "VACIATE";
+const URL_GET = "http://localhost:3001/api/dogs";
+const URL_GET_TEMPERAMENTS = "http://localhost:3001/api/temperament";
 
 export function getBreeds() {
     return async function (dispatch) {
@@ -97,5 +98,12 @@ export function setFalse() {
     return {
         type: SET_FALSE,
         payload: null
+    }
+}
+
+export function vaciate() {
+    return {
+        type: VACIATE,
+        payload: null,
     }
 }

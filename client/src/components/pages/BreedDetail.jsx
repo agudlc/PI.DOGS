@@ -1,13 +1,16 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { breedDetail } from "../../redux/actions";
+import { breedDetail, vaciate } from "../../redux/actions";
 import Breed from "../Breed";
 
 export default function BreedDetail() {
     const dispatch = useDispatch();
     const state = useSelector((state) => state.breedDetail);
     const {id}= useParams();
+    function handleClick() {
+        dispatch(vaciate());
+    }
     useEffect(() => {
         dispatch(breedDetail(id));
     }, [dispatch, id]);
@@ -15,9 +18,9 @@ export default function BreedDetail() {
     return ( 
             <div>
                 <Link to="/home">
-                <button>GO BACK</button>
+                <button onClick={handleClick}>GO BACK</button>
                 </Link>
-                <div>{state?.map(breed => 
+                { state.length > 0 ? (<div>{state?.map(breed => 
                 <Fragment>
                 <Breed id={breed.id} 
                     name={breed.name} 
@@ -29,7 +32,10 @@ export default function BreedDetail() {
                     height={breed.created? breed.height : breed.height[2] !== undefined ? 
                     "Min: " + breed.height[0] + " cm" + breed.height[1] + "Max: " + breed.height[2] + " cm" : breed.height[0] }/>
                 </Fragment>
-                )}</div>
+                )}</div>): 
+                <div>
+                    <h1>...LOADING</h1>
+                    </div>}
             </div>
    )
 }

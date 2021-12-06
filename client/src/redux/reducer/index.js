@@ -1,4 +1,4 @@
-import { ALPHABETIC_SORT, GET_BREEDS, GET_BREEDS_FILTER_DB, GET_BREED_DETAIL, GET_BREED_SEARCH, GET_TEMPERAMENT_FILTER, SET_FALSE, SET_TRUE, WEIGHT_SORT } from "../actions";
+import { ALPHABETIC_SORT, GET_BREEDS, GET_BREEDS_FILTER_DB, GET_BREED_DETAIL, GET_BREED_SEARCH, GET_TEMPERAMENT_FILTER, SET_FALSE, SET_TRUE, VACIATE, WEIGHT_SORT } from "../actions";
 import { GET_TEMPERAMENTS } from "../actions";
 
 
@@ -117,6 +117,11 @@ export default function rootReducer(state = initialState, action) {
                         ...state,
                         setFalse: false,
                     }
+            case VACIATE:
+                return {
+                    ...state,
+                    breedDetail: [],
+                }
         default: return state
     } 
 }

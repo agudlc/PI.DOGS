@@ -23,7 +23,7 @@ export default function BreedDetail() {
                         <button onClick={handleClick}>GO BACK</button>
                     </Link>
                 </div>
-                <div className={styles.bgk}/>
+                <div/>
                 { state.length > 0 ? (<div>{state?.map(breed => 
                 <Fragment>
                 <Breed id={breed.id} 

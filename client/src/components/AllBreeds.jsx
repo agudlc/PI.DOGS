@@ -1,6 +1,6 @@
 import React, {  Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Breed from "./Breed";
+import AllBreed from "./AllBreed";
 import {Link} from "react-router-dom";
 import Paginate from "./Paginate";
 import { setFalse } from "../redux/actions";
@@ -44,7 +44,7 @@ useEffect(() => {
             <div>
             {currentBreeds?.map(breed => 
                 <Link to={`/dogs/${breed.id}`} key={breed.id}>
-                    <Breed id={breed.id} 
+                    <AllBreed id={breed.id} 
                     name={breed.name} 
                     weight={breed.created? breed.weight : breed.weight[0] !== "NaN" ? 
                     "Min: " + breed.weight[0] + " Kg" + breed.weight[1] + "Max: " + breed.weight[2] + " Kg" : "That breed is unmeasurable"}

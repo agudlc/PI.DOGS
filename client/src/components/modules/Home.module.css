@@ -1,7 +1,12 @@
 .divContainer {
     position: absolute;
     width: 100%;
-    background-color: forestgreen;
+    height: 100%;
+    overflow-y: auto;
+    /* background-color: forestgreen; */
+    background-image: url("../../assets/bgkHome.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;

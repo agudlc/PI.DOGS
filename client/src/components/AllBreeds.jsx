@@ -43,7 +43,7 @@ useEffect(() => {
             </div>
             <div>
             {currentBreeds?.map(breed => 
-                <Link to={`/dogs/${breed.id}`} key={breed.id}>
+                <Link style={{textDecoration:"none"}} to={`/dogs/${breed.id}`} key={breed.id}>
                     <AllBreed id={breed.id} 
                     name={breed.name} 
                     weight={breed.created? breed.weight : breed.weight[0] !== "NaN" ? 

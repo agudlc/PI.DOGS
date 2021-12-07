@@ -32,3 +32,36 @@
     border-radius: 3rem;
     background-color:#d7be9b;
 }
+
+.height {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.label, .input {
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.label {
+    background-color: #988684;
+    border-radius: 2rem;
+}
+
+.errors, .create {
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+
+.errors {
+    background-color: red;
+    
+}
+
+.create {
+    background-color: #64792d;
+    /* margin: 0.25rem;
+    border-radius: 0.25rem; */
+}

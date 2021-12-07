@@ -110,48 +110,58 @@ export default function Form () {
                 </Link>
             </div>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input name="name" value={breed.name} onChange={handleChangue}></input>
-                <label>Height Min.</label>
-                <input name="heightMin" value={breed.heightMin} onChange={handleChangue}></input>
-                <label>Height Max.</label>
-                <input name="heightMax" value={breed.heightMax} onChange={handleChangue}></input>
+                <div className={styles.height}>
+                    <label className={styles.label}>Name</label>
+                    <input className={styles.input} name="name" value={breed.name} onChange={handleChangue}></input>
+                </div>
+                <div className={styles.height}>
+                    <label className={styles.label}>Height Min.</label>
+                    <input className={styles.input} name="heightMin" value={breed.heightMin} onChange={handleChangue}></input>
+                    <label className={styles.label}>Height Max.</label>
+                    <input className={styles.input} name="heightMax" value={breed.heightMax} onChange={handleChangue}></input>
+                </div>
                 {errors.height && 
-                <div>
+                <div className={styles.errors}>
                     <span>{errors.height}</span>
                 </div>}
-                <label>Weight Min.</label>
-                <input name="weightMin" value={breed.weightMin} onChange={handleChangue}></input>
-                <label>Weight Max.</label>
-                <input name="weightMax" value={breed.weightMax} onChange={handleChangue}></input>
+                <div className={styles.height}>
+                    <label className={styles.label}>Weight Min.</label>
+                    <input className={styles.input} name="weightMin" value={breed.weightMin} onChange={handleChangue}></input>
+                    <label className={styles.label}>Weight Max.</label>
+                    <input className={styles.input} name="weightMax" value={breed.weightMax} onChange={handleChangue}></input>
+                </div>
                 {errors.weight && 
-                <div>
+                <div className={styles.errors}>
                     <span>{errors.weight}</span>
                 </div>}
-                <label>Lifespan</label>
-                <input name="lifespan" value={breed.lifespan} onChange={handleChangue}></input>
-                <select name="temperament" onChange={handleSelect}>{stateTemperament.map((temperaments) =>
-                   <option key={temperaments.id} value={temperaments.name}>{temperaments.name}</option>
-                )}
-                </select>
+                <div className={styles.height}>
+                    <label className={styles.label}>Lifespan</label>
+                    <input className={styles.input} name="lifespan" value={breed.lifespan} onChange={handleChangue}></input>
+                </div>
+                <div className={styles.height}>
+                    <label className={styles.label}>Temperaments</label>
+                    <select name="temperament" onChange={handleSelect}>{stateTemperament.map((temperaments) =>
+                        <option key={temperaments.id} value={temperaments.name}>{temperaments.name}</option>
+                    )}</select>
+                </div>
                 {!errors.name && breed.temperament.length ? 
-                <div>
-                    <button type="submit">CREAR</button>
+                <div >
+                    <button className={styles.create} type="submit">CREAR</button>
                 </div> :
-                <div>
+                <div className={styles.errors}>
                     <span>{errors.name}</span>
                 </div>}
                 {errors.numbers && 
-                <div>
+                <div className={styles.errors}>
                     <span>{errors.numbers}</span>
                 </div>}
                 {errors.numbers2 && 
-                <div>
+                <div className={styles.errors}>
                     <span>{errors.numbers2}</span>
                 </div>}
                 {breed.temperament.map((el) =>
-                    <div>
-                        <p>{el}</p>
+                    <div className={styles.height}>
+                        <span className={styles.label}>{el}</span>
                         <button type="button" onClick={() => handleDelete(el)}>X</button>
                     </div>)}
             </form>

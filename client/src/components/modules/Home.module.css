@@ -1,7 +1,6 @@
 .divContainer {
     position: absolute;
     width: 100%;
-    
     background-color: forestgreen;
     display: flex;
     flex-direction: column;

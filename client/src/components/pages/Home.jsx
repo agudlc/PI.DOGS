@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect} from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { getBreeds } from "../../redux/actions";
 import AllBreeds from "../AllBreeds";
 import Nav from "../Nav";
@@ -9,6 +9,8 @@ import styles from "../modules/Home.module.css"
 
 export default function Home() {
 
+  const state = useSelector(state => state.breeds);
+
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -16,12 +18,15 @@ export default function Home() {
   }, [dispatch]);
   
   return (
-        <div className={styles.divContainer}>
+        <div className={styles.divContainer}>{ state.length? 
             <Fragment>
             <Nav/>
             <SearchBar/>
             <AllBreeds/>
-            </Fragment>
-        </div>
+            </Fragment> :
+            <div>
+              <h1>...LOADING</h1>
+            </div>
+        }</div>
     )
 }

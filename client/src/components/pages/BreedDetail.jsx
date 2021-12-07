@@ -17,10 +17,13 @@ export default function BreedDetail() {
     }, [dispatch, id]);
 
     return ( 
-            <div>
-                <Link to="/home">
-                <button onClick={handleClick}>GO BACK</button>
-                </Link>
+            <div className={styles.divContainerDetail}>
+                <div>
+                    <Link to="/home">
+                        <button onClick={handleClick}>GO BACK</button>
+                    </Link>
+                </div>
+                <div className={styles.bgk}/>
                 { state.length > 0 ? (<div>{state?.map(breed => 
                 <Fragment>
                 <Breed id={breed.id} 
@@ -37,7 +40,7 @@ export default function BreedDetail() {
                 )}</div>): 
                 <div>
                     <h1>...LOADING</h1>
-                    </div>}
+                </div>}
             </div>
    )
 }

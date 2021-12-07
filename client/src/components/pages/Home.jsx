@@ -16,7 +16,7 @@ export default function Home() {
   }, [dispatch]);
   
   return (
-        <div>
+        <div className={styles.divContainer}>
             <Fragment>
             <Nav/>
             <SearchBar/>

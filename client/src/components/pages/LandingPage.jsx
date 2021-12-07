@@ -9,7 +9,7 @@ export default function LandingPage() {
             <div>
                 <Link to="/home">
                     <div >
-                        <button type="button" className={styles.button}>Welcome to my wisdom in the art of dog's breeds</button>
+                        <button type="button" className={styles.button}>Welcome to my wisdom in the art of dog breeds</button>
                     </div>
                 </Link>
             </div>

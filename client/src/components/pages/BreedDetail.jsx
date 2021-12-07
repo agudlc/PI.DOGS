@@ -20,7 +20,7 @@ export default function BreedDetail() {
             <div className={styles.divContainerDetail}>
                 <div>
                     <Link to="/home">
-                        <button onClick={handleClick}>GO BACK</button>
+                        <button className={styles.button} onClick={handleClick}>GO BACK</button>
                     </Link>
                 </div>
                 <div/>
@@ -38,7 +38,7 @@ export default function BreedDetail() {
                     life_span={breed.life_span}/>
                 </Fragment>
                 )}</div>): 
-                <div>
+                <div className={styles.loading}>
                     <h1>...LOADING</h1>
                 </div>}
             </div>

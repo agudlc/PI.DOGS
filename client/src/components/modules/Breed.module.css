@@ -2,4 +2,53 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-image: url("../../assets/bgkDetail.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    border-radius: 5rem;
+    background-color:#d7be9b;
+}
+
+
+.divSpan {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.divContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.divRight {
+    padding-left: 3rem;
+    padding-right: 5rem;
+    /* background-color: thistle; */
+}
+
+.divLeft {
+    padding-right: 3rem;
+    padding-bottom: 1rem;
+}
+
+.img {
+    border-radius: 1rem;
+}
+
+.contentText {
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: #acc3a6;
+}
+
+.title {
+    
+    padding-top: 1px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1px;
+    background-color: #988684;
+    border-radius: 1rem;
 }

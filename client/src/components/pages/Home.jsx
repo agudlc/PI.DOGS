@@ -20,8 +20,10 @@ export default function Home() {
   return (
         <div className={styles.divContainer}>{ state.length? 
             <Fragment>
-            <Nav/>
+            <div>
             <SearchBar/>
+            </div>
+            <Nav/>
             <AllBreeds/>
             </Fragment> :
             <div>

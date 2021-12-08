@@ -1,0 +1,23 @@
+.button { 
+    border-radius: 0.5rem;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+    width: 80%;
+    padding: 1rem;
+    
+}
+
+.container {
+
+    /* top: 2rem;
+    right: 2rem;
+    width: 40%; */
+    
+    background-color: #64792d;
+
+    border-radius: 23px;
+}

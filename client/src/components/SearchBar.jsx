@@ -35,13 +35,13 @@ export default function SearchBar() {
     }, [stateBreedSearch, dispatch] );
     
     return (
-        <div>
-            <div>
-            <input name="name" value={breed.name} type="text" placeholder="Search a breed" onChange={handleChange} />
-            <button type="submit" onClick={handleSubmit}></button>
+        <div className={styles.container}>
+            <div className={styles.search}>
+                <input className={styles.input} name="name" value={breed.name} type="text" placeholder="Search a breed" onChange={handleChange} />
+                <button className={styles.button} type="submit" onClick={handleSubmit}>Search</button>
             </div>
-        <div>{
-         breed.search?.map((el) => <Link to={`dogs/${el.id}`} key={el.id}>{el.name} </Link>)
+            <div>{
+                breed.search?.map((el) => <Link to={`dogs/${el.id}`} key={el.id}>{el.name} </Link>)
             }</div>
         </div>
         

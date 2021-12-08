@@ -4,13 +4,10 @@ const router = Router();
 
 router.post("/", async (req, res, next) => {
     try {
-        let { name, heightMin, heightMax, weightMax, weightMin, lifespan, temperament, created} = req.body;
-        let weight = `Max: ${weightMin} Kg-Min: ${weightMax} Kg`;
-        let height = `Max: ${heightMin} cm-Min: ${heightMax} cm`;
-        let life_span = `${lifespan} years old`
-        if ( name && height && weight) {
+        let { name, heightMin, heightMax, weightMax, weightMin, life_span, temperament, created} = req.body;
+        if ( name && heightMin && heightMax && weightMin && weightMax) {
         const newBreed = await Breed.create({
-            name, height, weight, life_span, created
+            name, heightMin, heightMax, weightMin, weightMax, life_span, created
         });
         await temperament.forEach(async (temperament) => {
             let temperamentDb = await Temperament.findAll({

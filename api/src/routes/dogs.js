@@ -101,10 +101,10 @@ router.get("/:idRaza", async (req, res, next) => {
             return {
                 id: el.id,
                 name: el.name,
-                weight: el.weight.metric.split(" "),
+                weight: el.weight.metric.split(" - "),
                 image: el.image.url,
                 temperament: el.temperament,
-                height: el.height.metric.split(" "),
+                height: el.height.metric.split(" - "),
                 life_span: el.life_span,
                 created: false,
             };

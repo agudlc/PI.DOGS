@@ -8,14 +8,18 @@ import styles from "../modules/Form.module.css"
 function validate(breed) {
     let errors= {};
     const nums = new RegExp("^\s*?[0-9]{1,2}\s*$");
-    const numsHeight = new RegExp("^\s*?[0-9]{1,3}\s*$")
+    const numsHeight = new RegExp("^\s*?[0-9]{1,3}\s*$");
+    let weightMinN = parseInt(breed.weightMin);
+    let weightMaxN = parseInt(breed.weightMax);
+    let heightMinN = parseInt(breed.heightMin);
+    let heightMaxN = parseInt(breed.heightMax);
     // for (let keys in breed) {
     //     if( breed[`${keys}`] === "" || breed[`${keys}`] === []) {
     //         errors.name = "Some inputs are empty"
     //     }
     // }
     if (!breed.name || !breed.weightMax || !breed.weightMin || !breed.heightMin || !breed.heightMax || 
-        !breed.lifespan ) {
+        !breed.life_span ) {
         errors.name = "Some inputs are empty"
     }
     if (!nums.test(breed.weightMax) || !nums.test(breed.weightMin) || !nums.test(breed.lifespan)) {
@@ -24,10 +28,11 @@ function validate(breed) {
     if (!numsHeight.test(breed.heightMax) || !numsHeight.test(breed.heightMin)) {
         errors.numbers2 = "Height has to be a possible number"
     }
-    if (breed.weightMin > breed.weightMax) {
+    
+    if (weightMinN > weightMaxN) {
         errors.weight = "The min has to be lower to max"
     }
-    if (breed.heightMin > breed.heightMax) {
+    if (heightMinN > heightMaxN) {
         errors.height = "The min has to be lower to max"
     }
     return errors;
@@ -48,7 +53,7 @@ export default function Form () {
         heightMax: "",
         weightMin: "",
         weightMax: "",
-        lifespan: "",
+        life_span: "",
         created: true,
         temperament: [],
     });
@@ -89,7 +94,7 @@ export default function Form () {
                 heightMax: "",
                 weightMin: "",
                 weightMax: "",
-                lifespan: "",
+                life_span: "",
                 created: true,
                 temperament: [],
             });
@@ -136,7 +141,7 @@ export default function Form () {
                 </div>}
                 <div className={styles.height}>
                     <label className={styles.label}>Lifespan</label>
-                    <input className={styles.input} name="lifespan" value={breed.lifespan} onChange={handleChangue}></input>
+                    <input className={styles.input} name="life_span" value={breed.life_span} onChange={handleChangue}></input>
                 </div>
                 <div className={styles.height}>
                     <label className={styles.label}>Temperaments</label>
@@ -160,8 +165,8 @@ export default function Form () {
                     <span>{errors.numbers2}</span>
                 </div>}
                 {breed.temperament.map((el) =>
-                    <div className={styles.height}>
-                        <span className={styles.label}>{el}</span>
+                    <div className={styles.height} >
+                        <span  className={styles.label}>{el}</span>
                         <button type="button" onClick={() => handleDelete(el)}>X</button>
                     </div>)}
             </form>

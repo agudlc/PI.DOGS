@@ -22,7 +22,7 @@ function validate(breed) {
         !breed.life_span ) {
         errors.name = "Some inputs are empty"
     }
-    if (!nums.test(breed.weightMax) || !nums.test(breed.weightMin) || !nums.test(breed.lifespan)) {
+    if (!nums.test(breed.weightMax) || !nums.test(breed.weightMin) || !nums.test(breed.life_span)) {
         errors.numbers = "Weight and lifespan has to be possible numbers in each field"
     }
     if (!numsHeight.test(breed.heightMax) || !numsHeight.test(breed.heightMin)) {

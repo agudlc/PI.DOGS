@@ -109,7 +109,21 @@ router.get("/:idRaza", async (req, res, next) => {
                 created: false,
             };
     });
-    if (breedApi.length > 0) return res.status(200).send(breedApi);
+    const betterApi = await breedApi.map((el) => {
+        return {
+            id: el.id,
+            name: el.name,
+            weightMin: el.weight[0],
+            weightMax: el.weight[1],
+            heightMin: el.height[0],
+            heightMax: el.height[1],
+            image: el.image,
+            life_span: el.life_span,
+            temperament: el.temperament,
+            created: el.created? true : false,
+        }
+    })
+    if (betterApi.length > 0) return res.status(200).send(betterApi);
 
     const getInfoBreed = await Breed.findAll({
         where: {

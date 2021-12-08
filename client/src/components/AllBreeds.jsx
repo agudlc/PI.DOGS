@@ -46,10 +46,9 @@ useEffect(() => {
                 <Link style={{textDecoration:"none"}} to={`/dogs/${breed.id}`} key={breed.id}>
                     <AllBreed id={breed.id} 
                     name={breed.name}  
-                    weight={breed.created? "Min: " + breed.weightMin + " Kg - Max: " + breed.weightMax + " Kg"   
-                    : breed.weight[0] === "NaN" ? "That breed is unmeasurable" : 
-                    breed.weight[1] === undefined ? "Min: " + breed.weight[0] + " Kg"  
-                    : "Min: " + breed.weight[0] + " Kg - Max: " + breed.weight[1] + " Kg" }
+                    weight={breed.weightMin === "NaN" ? "That breed is unmeasurable" : 
+                    breed.weightMax === undefined ? "Min: " + breed.weightMin + " Kg"  
+                    : "Min: " + breed.weightMin + " Kg - Max: " + breed.weightMax + " Kg" }
                     image={breed.image? breed.image : "https://i.ytimg.com/vi/A-sO9__4Cis/hqdefault.jpg"}
                     temperament={breed.temperament? breed.temperament 
                     : breed.temperaments? breed.temperaments.map((el) => el.name + (" ")) : "That's a misterious Breed"}/>

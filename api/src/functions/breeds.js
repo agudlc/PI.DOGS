@@ -18,6 +18,19 @@ const getTotalBreeds = async (req, res, next) => {
             created: el.created? true : false,
         }
     });
+    const betterApi = await getInfoApi.map((el) => {
+        return {
+            id: el.id,
+            name: el.name,
+            weightMin: el.weight[0],
+            weightMax: el.weight[1],
+            heightMin: el.height[0],
+            heightMax: el.height[1],
+            image: el.image,
+            temperament: el.temperament,
+            created: el.created? true : false,
+        }
+    })
     // attributes: ["name"]
     const getDbInfo = await Breed.findAll({
         include: {
@@ -30,9 +43,9 @@ const getTotalBreeds = async (req, res, next) => {
     });
 
     if(!getDbInfo) {
-        return getInfoApi
+        return betterApi
     } else {
-        const info = getInfoApi.concat(getDbInfo);
+        const info = betterApi.concat(getDbInfo);
         return info;
     }
 };

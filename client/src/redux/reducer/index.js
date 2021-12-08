@@ -72,29 +72,30 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 breeds: filterTemp,
             }
-            case WEIGHT_SORT:
-                let weightSort= action.payload === "A" ? state.breeds.sort((a,b) => {
-                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
+            case WEIGHT_SORT:  
+            let weightSort= action.payload === "A" ? state.breeds.sort((a,b) => {
+                    if(!isFinite(a.weightMin) && !isFinite(b.weightMin)) {
                         return 0;
                     }
-                    if(!isFinite(a.weight[0])) {
+                    if(!isFinite(a.weightMin)) {
                         return 1;
                     }
-                    if(!isFinite(b.weight[0])) {
+                    if(!isFinite(b.weightMin)) {
                         return -1;
                     }
-                    return a.weight[0]-b.weight[0];
+                    return a.weightMin-b.weightMin;
+                
                 }) : state.breeds.sort((a,b) => {
-                    if(!isFinite(a.weight[0]) && !isFinite(b.weight[0])) {
+                    if(!isFinite(a.weightMin) && !isFinite(b.weightMin)) {
                         return 0;
                     }
-                    if(!isFinite(a.weight[0])) {
+                    if(!isFinite(a.weightMin)) {
                         return 1;
                     }
-                    if(!isFinite(b.weight[0])) {
+                    if(!isFinite(b.weightMin)) {
                         return -1;
                     }
-                    return a.weight[0]-b.weight[0];
+                    return a.weightMin-b.weightMin;
                 }).reverse();
             
             

@@ -19,9 +19,9 @@ export default function TemperamentFilter() {
 }, [dispatch]);
     
     return (
-        <div >
-            <label>Search for a breed for his temperament</label>
-            <select name="temperament" onChange={handleChange} >{stateTemperament.map((temperaments) =>
+        <div className={styles.container} >
+            <label className={styles.content} >Search for a breed for his temperament</label>
+            <select className={styles.content}  name="temperament" onChange={handleChange} >{stateTemperament.map((temperaments) =>
                    <option key={temperaments.id} value={temperaments.name}>{temperaments.name}</option>)}
             </select>
             

@@ -8,7 +8,7 @@ import styles from "./modules/Nav.module.css"
 
 export default function Nav() {
     return (
-        <div>
+        <div className={styles.container}>
             <Fragment>
                 <ExistentBreedFilter/>
                 <TemperamentFilter/>

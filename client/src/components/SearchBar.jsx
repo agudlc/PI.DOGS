@@ -41,7 +41,7 @@ export default function SearchBar() {
                 <button className={styles.button} type="submit" onClick={handleSubmit}>Search</button>
             </div>
             <div>{
-                breed.search?.map((el) => <Link to={`dogs/${el.id}`} key={el.id}>{el.name} </Link>)
+                breed.search?.map((el) => <Link style={{textDecoration:"none"}} to={`dogs/${el.id}`} key={el.id}>{el.name} </Link>)
             }</div>
         </div>
         

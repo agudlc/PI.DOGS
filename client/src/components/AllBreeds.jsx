@@ -33,13 +33,13 @@ useEffect(() => {
 
     return (
         <div>
-            <div>
-             <Fragment>
-             <Paginate
-             breedsPerPage={breedsPerPage}
-             state={state.length}
-             paginate={paginate}/>
-             </Fragment>
+            <div className={styles.paginate}>
+                <Fragment>
+                    <Paginate
+                    breedsPerPage={breedsPerPage}
+                    state={state.length}
+                    paginate={paginate}/>
+                </Fragment>
             </div>
             <div>
             {currentBreeds?.map(breed => 

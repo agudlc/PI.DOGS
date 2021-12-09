@@ -18,11 +18,11 @@ export default function ExistentBreedFilter() {
     
     
     return (
-    <div onClick={handleClick}>
-        <button type="button" value="created">Breeds created</button>
-        <button type="button" value="all">All breeds</button>
+    <div classname={styles.container} onClick={handleClick}>
+        <button className={styles.buttons}type="button" value="created">Breeds created</button>
+        <button className={styles.buttons}type="button" value="all">All breeds</button>
         <Link to={"/create"}>
-        <button type="button">Create a Breed</button>
+        <button className={styles.buttons}type="button">Create a Breed</button>
         </Link>
     </div>
     )

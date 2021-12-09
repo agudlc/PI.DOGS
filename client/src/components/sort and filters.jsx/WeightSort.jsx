@@ -15,7 +15,7 @@ export default function WeightSort() {
     
     return (
             <div>
-            <select onChange={handleChange}>
+            <select className={styles.select} onChange={handleChange}>
             <option value ="">Weight Sort</option>
             <option value ="A">Ascendent</option>
             <option value ="D">Descendent</option>

@@ -18,7 +18,7 @@ export default function AlphabeticSort() {
     
     return (
         <div>
-            <select onChange={handleChange}>
+            <select className={styles.select} onChange={handleChange}>
             <option value ="">Alphabetical Sort</option>
             <option value ="A">A to Z</option>
             <option value ="Z">Z to A</option>

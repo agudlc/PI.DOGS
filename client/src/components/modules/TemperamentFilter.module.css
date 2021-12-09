@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    background-color:#acc3a6;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}

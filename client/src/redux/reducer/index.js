@@ -29,7 +29,7 @@ export default function rootReducer(state = initialState, action) {
         case GET_BREED_SEARCH:
             return {
                 ...state,
-                breedSearch: action.payload,
+                breeds: action.payload,
             }
         case ALPHABETIC_SORT:
             let alphabeticSort = action.payload === "A" ? state.breeds.sort((a,b) => {

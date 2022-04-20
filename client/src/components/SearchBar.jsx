@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getBreedSearch } from "../redux/actions";
 import styles from "./modules/SearchBar.module.css"
 
@@ -40,9 +39,6 @@ export default function SearchBar() {
                 <input className={styles.input} name="name" value={breed.name} type="text" placeholder="Search a breed" onChange={handleChange} />
                 <button className={styles.button} type="submit" onClick={handleSubmit}>Search</button>
             </div>
-            <div>{
-                breed.search?.map((el) => <Link style={{textDecoration:"none"}} to={`dogs/${el.id}`} key={el.id}>{el.name} </Link>)
-            }</div>
         </div>
         
     )

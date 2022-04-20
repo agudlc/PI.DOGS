@@ -7,8 +7,8 @@ import styles from "../modules/Form.module.css"
 
 function validate(breed) {
     let errors= {};
-    const nums = new RegExp("^\s*?[0-9]{1,2}\s*$");
-    const numsHeight = new RegExp("^\s*?[0-9]{1,3}\s*$");
+    const nums = new RegExp("^s*?[0-9]{1,2}s*$");
+    const numsHeight = new RegExp("^s*?[0-9]{1,3}s*$");
     let weightMinN = parseInt(breed.weightMin);
     let weightMaxN = parseInt(breed.weightMax);
     let heightMinN = parseInt(breed.heightMin);

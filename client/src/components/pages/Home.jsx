@@ -20,13 +20,17 @@ export default function Home() {
   return (
         <div className={styles.divContainer}>{ state.length? 
             <Fragment>
-            <div>
-            <SearchBar/>
-            </div>
-            <Nav/>
-            <AllBreeds/>
-            </Fragment> :
-            <div>
+              <div className={styles.searchBar}>
+                <SearchBar/>
+              </div>
+              <div className={styles.nav}>
+                <Nav/>
+              </div>
+              <div className={styles.allBreeds}>
+                <AllBreeds/>
+              </div>
+              </Fragment> :
+            <div className={styles.loading}>
               <h1>...LOADING</h1>
             </div>
         }</div>

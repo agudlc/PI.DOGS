@@ -12,3 +12,8 @@
     align-items: center;
 }
 
+.searchBar {
+    width: 30%;
+    display: flex;
+    align-self: flex-end;
+}

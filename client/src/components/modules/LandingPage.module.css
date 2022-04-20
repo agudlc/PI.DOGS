@@ -1,22 +1,32 @@
-.button {
-    width: 200px;
-    height: 100px;
-    text-align: center;
-    background-color: transparent;
-    font-weight: 900;
-    backdrop-filter: blur(16px);
-    
-}
 
-.divContainerLanding {
-    position: absolute;
-        height: 100%; 
-        width: 100%;
+.container {
+    height: 100%; 
+    width: 100%;
+    min-height: 100vh;
     background-image: url("../../assets/bgkLanding.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.link {
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    text-align: center;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 900;
+    backdrop-filter: blur(4px);
+    border-color: #7E8F2D;
+    border-radius: 1rem;
+    border-width: 2px;
+    color: #2A343B;   
+}
+
+.link:hover {
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transform: scale(1.1);
 }

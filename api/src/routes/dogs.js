@@ -51,11 +51,29 @@ router.get("/", async (req, res, next) => {
     {headers: {"x-api-key": `${API_KEY}` } });
     const breed = getUrl.data?.map((el) => {
         return {
-            name: el.name,
             id: el.id,
+            name: el.name,
+            weight: el.weight.metric.split(" - "),
+            height: el.height.metric.split(" - "),
+            image: el.image.url,
+            temperament: el.temperament,
+            created: el.created? true : false,
+        }
+    })
+    const betterApi = await breed.map((el) => {
+        return {
+            id: el.id,
+            name: el.name,
+            weightMin: el.weight[0],
+            weightMax: el.weight[1],
+            heightMin: el.height[0],
+            heightMax: el.height[1],
+            image: el.image,
+            temperament: el.temperament,
+            created: el.created? true : false,
         }
     })    
-    let breedName = await breed.filter(el => {
+    let breedName = await betterApi.filter(el => {
             if (el.name.toLowerCase().includes(name.toLowerCase())) {
                 return el;
             }
@@ -63,7 +81,7 @@ router.get("/", async (req, res, next) => {
         const getInfoBreed = await Breed.findAll({
             where: {
                 name: name
-            },attributes: {exclude: [ "height","weight","life_span","createdAt", "updatedAt", "created", "temperaments"]},
+            },attributes: {exclude: [ "createdAt", "updatedAt",]},
             // include: {
             //     model: Temperament,
             //     attributes: ["name", "id"],
